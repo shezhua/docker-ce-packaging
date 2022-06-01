@@ -2,14 +2,18 @@
 1. 准备一个海外机器4core + 16G + 50G硬盘
 2. 系统要求：Ubuntu 18.04 + Go 1.13.15
 3. 安装docker-ce 最新版 （20.10.2）
-4. git clone https://github.com/shezhua/docker-ce-packaging packaging
+4. git clone https://github.com/docker/docker-ce-packaging packaging
 ```
-cd packaging
-export VERSION=20.10.2.bomayu
+cd packaging && git checkout -b 20.10 origin/20.10
+export VERSION=20.10.16
 export DOCKER_CLI_REPO=https://github.com/shezhua/cli.git
 export DOCKER_ENGINE_REPO=https://github.com/shezhua/moby.git
+export PLATFORM="Docker Engine - Bomayu SE"
+export DOCKER_CLI_REF=v20.10.16.bomayu
+export DOCKER_ENGINE_REF=v20.10.16.bomayu
 
-make rpm -e
+make centos-7
+make centos-8
 ```
 
 # Docker CE Packaging
